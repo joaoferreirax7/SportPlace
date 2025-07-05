@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Loja Estilo Nike</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #000;
+        }
+
+        header {
+            background-color: #000;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header button {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .product h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            margin-bottom: 15px;
+        }
+
+        .product button {
+            background-color: #000;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #cart {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: white;
+            border: 1px solid #000;
+            padding: 20px;
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        #cart h3 {
+            margin-bottom: 10px;
+        }
+
+        .cart-item {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>SportPlace</h1>
+        <button onclick="toggleCart()">Ver Carrinho (<span id="cart-count">0</span>)</button>
+        <button onclick="logout()" style="margin-left: 10px;">Sair</button>
+
+    </header>
+
+    <div class="products">
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/011903ID.jpg" alt="Tênis Nike 1">
+            <h2>Nike Air Zoom</h2>
+            <p>R$ 599,99</p>
+            <button onclick="addToCart('Nike Air Zoom', 599.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/011899IH.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/028307MT.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/058436P1A3.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/026552ID.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/02393617.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/061746ID.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/023936ID.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/023709ID.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/023709P1.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/026547ID.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/02654751.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/026478IF.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/05901300.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/0249387TA18.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/02484717.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/016670ID.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+            <img src="https://imgnike-a.akamaihd.net/360x360/024847ID.jpg" alt="Tênis Nike 2">
+            <h2>Nike Revolution</h2>
+            <p>R$ 329,99</p>
+            <button onclick="addToCart('Nike Revolution', 329.99)">Adicionar ao Carrinho</button>
+        </div>
+        <!-- Você pode adicionar mais produtos aqui -->
+    </div>
+
+    <div id="cart">
+        <h3>Seu Carrinho</h3>
+        <div id="cart-items"></div>
+        <p><strong>Total: R$ <span id="total">0.00</span></strong></p>
+    </div>
+
+    <script>
+        let cart = [];
+        const cartItems = document.getElementById("cart-items");
+        const cartCount = document.getElementById("cart-count");
+        const total = document.getElementById("total");
+
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            cartItems.innerHTML = "";
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                const div = document.createElement("div");
+                div.classList.add("cart-item");
+                div.textContent = `${item.product} - R$ ${item.price.toFixed(2)}`;
+                cartItems.appendChild(div);
+                totalPrice += item.price;
+            });
+
+            cartCount.textContent = cart.length;
+            total.textContent = totalPrice.toFixed(2);
+        }
+
+        function toggleCart() {
+            const cartBox = document.getElementById("cart");
+            cartBox.style.display = cartBox.style.display === "block" ? "none" : "block";
+
+            const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+            if (!usuario) {
+                alert("Você precisa estar logado para acessar a loja.");
+                window.location.href = "login.html";
+            }
+        }
+    </script>
+    <script>
+  function logout() {
+    localStorage.removeItem("usuarioLogado");
+    window.location.href = "login.html";
+  }
+</script>
+
+
+</body>
+
+</html>
